@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.1",
+    "@material-ui/icons": "^3.0.2",
     "apollo-boost": "^0.1.27",
     "apollo-link-context": "^1.0.14",
     "graphiql": "^0.12.0",
