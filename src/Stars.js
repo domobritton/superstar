@@ -1,14 +1,15 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { withApollo } from 'react-apollo';
-import { graphql } from 'react-apollo';
-import PropTypes from 'prop-types';
+import { graphql, withApollo } from 'react-apollo';
 
-import { withStyles } from '@material-ui/core/styles';
+import Search from './Search';
+import ButtonUI from './ButtonUI';
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import StarRate from '@material-ui/icons/StarRate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import styled from 'styled-components';
 
@@ -29,6 +30,7 @@ const myStars = gql`
             id
             nameWithOwner
             description
+            url
             primaryLanguage {
               color
               name
@@ -43,84 +45,101 @@ const myStars = gql`
   }
 `;
 
-const Stars = ({ classes, loading, error, user }) => {
+const Stars = ({ loading, error, user }) => {
   if (loading) return 'Loading...';
   if (error) return `Error!`;
   return (
-    <div className={classes.root}>
+    <Page>
+      <Search />
       <Grid container spacing={24}>
         {user.starredRepositories.edges.map(({ node }) => (
           <Grid key={node.id} item xs={12}>
-            <Paper className={classes.paper}>
-              <Repo>{node.nameWithOwner}</Repo>
-              <Description>{node.description}</Description>
-              <Box>
-                Language
-                <Language style={{ color: `${node.primaryLanguage.color}` }}>
-                  {node.primaryLanguage.name}
-                </Language>
-                <StarCount>
-                  {node.stargazers.totalCount}
-                  <StarRate />
-                </StarCount>
-              </Box>
-              <Wrapper>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                >
-                  <StarRate className={classes.leftIcon} />
-                  UNSTAR
-                </Button>
-              </Wrapper>
-            </Paper>
+            <Box>
+              <Left>
+                <Repo>{node.nameWithOwner}</Repo>
+                <Description>{node.description}</Description>
+                <Info>
+                  <Text>Language</Text>
+                  <Language style={{ color: `${node.primaryLanguage.color}` }}>
+                    {node.primaryLanguage.name}
+                  </Language>
+                  <StarCount>
+                    {node.stargazers.totalCount}
+                    <StarRate />
+                  </StarCount>
+                </Info>
+              </Left>
+              <Right>
+                <Link href={node.url} target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faGithub} size="2x" color="gray" />
+                </Link>
+                <ButtonUI />
+              </Right>
+            </Box>
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Page>
   );
 };
 
-Stars.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const Page = styled.div`
+  flex-grow: 1;
+  padding: 0 5%;
+`;
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    padding: '5%',
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'left',
-    color: theme.palette.text.primary,
-  },
-  button: {
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-  },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
-  },
-});
+const Box = styled(Paper)`
+  display: flex;
+  padding: 2%;
+  text-align: left;
+  color: #282c34;
+`;
 
 const Repo = styled.h2`
+  margin-top: 0;
   font-size: 22px;
   color: gray;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Description = styled.div`
   margin-top: 10px;
   margin-bottom: 20px;
   color: lightgray;
+  word-wrap: wrap;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
-const Box = styled.div`
+const Left = styled.div`
   display: flex;
-  align-items: center;
-  width: 80%;
+  flex-direction: column;
+  width: 90%;
+
+  @media (max-width: 450px) {
+    width: 65%;
+  }
+`;
+
+const Info = styled.div`
+  display: flex;
+
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
+`;
+
+const Text = styled.div`
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Language = styled.div`
@@ -134,13 +153,16 @@ const StarCount = styled.div`
   font-size: 14px;
 `;
 
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
+const Right = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+`;
+
+const Link = styled.a`
+  margin-left: auto;
+  margin-bottom: 20px;
 `;
 
 const myQuery = graphql(myStars, { props: ({ data }) => ({ ...data }) });
-const myStyles = withStyles(styles);
-
-export default myQuery(myStyles(withApollo(Stars)));
+export default myQuery(withApollo(Stars));

@@ -1,74 +1,101 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import gql from 'graphql-tag';
+import { qraphql, Query, withApollo } from 'react-apollo';
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 
+import styled from 'styled-components';
+
+// will need logic for text field to search for repos by organization or by user
+
+const SearchRepoQuery = gql`
+  query FindRepo($query: String!) {
+    search(first: 10, query: $query, type: REPOSITORY) {
+      edges {
+        node {
+          ... on Repository {
+            nameWithOwner
+            description
+            url
+            primaryLanguage {
+              color
+              name
+            }
+            stargazers {
+              totalCount
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 class Search extends Component {
   state = {
-    repo: '',
+    value: 0,
+    text: 'View My Stars',
   };
 
-  handleChange = name => event => {
-    this.setState({
-      repo: event.target.value,
-    });
+  handleChange = (event, value) => {
+    debugger;
+    this.setState({ value, text: event.target.innerText });
   };
 
   render() {
-    const { classes } = this.props;
+    const { value, text } = this.state;
     return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          id="outlined-full-width"
-          label="SEARCH REPOS"
-          className={classes.input}
-          placeholder="What will you star today?"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <Button className={classes.button}>
-          <ArrowForward className={classes.arrow} />
-        </Button>
-      </form>
+      <>
+        <div>
+          <AppBar position="static" color="default">
+            <Tabs
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              variant="fullWidth"
+            >
+              <Tab label="View My Stars" />
+              <Tab label="Search By Repository" />
+              <Tab label="Search By Organization" />
+            </Tabs>
+          </AppBar>
+        </div>
+        <Form noValidate autoComplete="off">
+          <TextField
+            id="outlined-full-width"
+            label={text}
+            placeholder="What will you star today?"
+            fullWidth
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginLeft: 10 }}
+          >
+            <Arrow />
+          </Button>
+        </Form>
+      </>
     );
   }
 }
 
-const styles = () => ({
-  container: {
-    display: 'flex',
-    paddingTop: '40px',
-    paddingLeft: '5%',
-    paddingRight: '5%',
-  },
-  input: {
-    marginRight: 8,
-    marginTop: 0,
-  },
-  button: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '55px',
-    height: '55px',
-    backgroundColor: 'red',
-    border: 'none',
-  },
-  arrow: {
-    color: 'white',
-    fontSize: 40,
-  },
-});
+const Form = styled.form`
+  display: flex;
+  padding: 40px 5%;
+`;
 
-Search.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const Arrow = styled(ArrowForward)`
+  color: white;
+  font-size: 40px;
+`;
 
-export default withStyles(styles)(Search);
+export default Search;
