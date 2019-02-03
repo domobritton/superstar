@@ -12,6 +12,8 @@ import StarRate from '@material-ui/icons/StarRate';
 
 import styled from 'styled-components';
 
+// user(login: ) switch to variable to allow user to see their own starred repos
+
 const myStars = gql`
   {
     user(login: "domobritton") {

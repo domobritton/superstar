@@ -6,6 +6,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+import Search from './Search';
 import Stars from './Stars';
 
 import logo from './logo.svg';
@@ -40,6 +41,7 @@ class App extends Component {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
+          <Search />
           <Stars />
         </div>
       </ApolloProvider>
