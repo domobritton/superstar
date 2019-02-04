@@ -9,12 +9,11 @@ import Paper from '@material-ui/core/Paper';
 import StarRate from '@material-ui/icons/StarRate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
 import styled from 'styled-components';
 
 const SearchQuery = gql`
   query($queryString: String!) {
-    search(query: $queryString, type: REPOSITORY, first: 15) {
+    search(query: $queryString, type: REPOSITORY, first: 100) {
       repositoryCount
       edges {
         node {
@@ -46,6 +45,7 @@ const Results = ({ search }) => {
           if (error) return `Error! ${error.message}`;
           return (
             <Grid container spacing={24}>
+              <Count>{data.search.repositoryCount} REPOSITORIES FOUND</Count>
               {data.search.edges.map(({ node }) => {
                 return (
                   <Grid key={node.id} item xs={12}>
@@ -74,11 +74,7 @@ const Results = ({ search }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <FontAwesomeIcon
-                            icon={faGithub}
-                            size="2x"
-                            color="gray"
-                          />
+                          <Github icon={faGithub} size="2x" color="gray" />
                         </Link>
                         <ButtonUI />
                       </Right>
@@ -97,6 +93,15 @@ const Results = ({ search }) => {
 const Page = styled.div`
   flex-grow: 1;
   padding: 0 5%;
+`;
+
+const Count = styled.div`
+  margin-left: 20px;
+  font-size: 22px;
+  height: 30px;
+  color: gray;
+  letter-spacing: 6px;
+  font-weight: 700;
 `;
 
 const Box = styled(Paper)`
@@ -168,6 +173,13 @@ const Right = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+`;
+
+const Github = styled(FontAwesomeIcon)`
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color: lightgray;
+  }
 `;
 
 const Link = styled.a`
