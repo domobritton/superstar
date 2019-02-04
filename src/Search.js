@@ -4,7 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
 
 export const Search = ({ text, updateSearch, value }) => (
-  <Form noValidate autoComplete="off">
+  <Form
+    noValidate
+    autoComplete="off"
+    onSubmit={e => {
+      e.preventDefault();
+    }}
+  >
     {value !== 0 && (
       <TextField
         label={text}

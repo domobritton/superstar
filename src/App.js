@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { User } from './User';
 import { SelectionBar } from './SelectionBar';
 import { Search } from './Search';
 import Results from './Results';
@@ -11,15 +12,12 @@ export default class App extends Component {
   state = {
     search: '',
     text: '',
-    user: 'user:JOlivier92',
+    user: '',
     value: 0,
+    login: false,
   };
 
-  componentDidMount() {
-    const { user } = this.state;
-    this.setState({ search: user });
-  }
-
+  // button change
   handleChange = (event, value) => {
     const { user } = this.state;
     const text = event.target.innerText;
@@ -30,26 +28,48 @@ export default class App extends Component {
     this.setState({ search, value, text });
   };
 
-  updateSearch = event => {
-    const { value } = this.state;
-    const key = value === 1 ? 'user' : 'name';
-    this.setState({ search: `${key}:${event.target.value}` });
+  // set user
+  updateUser = event => {
+    const { value } = event.target;
+    this.setState({ user: value });
   };
 
-  setValue = value => {
-    this.setState({ value });
+  // submit user
+  submitForm = event => {
+    event.preventDefault();
+    const { user } = this.state;
+    this.setState(prevState => ({
+      login: !prevState.login,
+      search: user,
+    }));
+  };
+
+  // search query
+  updateSearch = event => {
+    const { value } = event.target;
+    this.setState({ search: value });
   };
 
   render() {
-    const { search, text, value } = this.state;
+    const { login, search, text, value } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <SelectionBar value={value} handleChange={this.handleChange} />
-        <Search text={text} updateSearch={this.updateSearch} value={value} />
-        <Results search={search} />
+        {!login ? (
+          <User updateUser={this.updateUser} submitForm={this.submitForm} />
+        ) : (
+          <>
+            <SelectionBar value={value} handleChange={this.handleChange} />
+            <Search
+              text={text}
+              updateSearch={this.updateSearch}
+              value={value}
+            />
+            <Results search={search} value={value} />
+          </>
+        )}
       </div>
     );
   }
