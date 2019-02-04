@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from '@material-ui/core/Button';
 import StarRate from '@material-ui/icons/StarRate';
-
 import styled from 'styled-components';
 
 // will need logic for button that will star and unstar repos

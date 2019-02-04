@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
@@ -24,6 +25,12 @@ export const Search = ({ text, updateSearch, value }) => (
     )}
   </Form>
 );
+
+Search.propTypes = {
+  text: PropTypes.string,
+  updateSearch: PropTypes.func,
+  value: PropTypes.number,
+};
 
 const Form = styled.form`
   display: flex;

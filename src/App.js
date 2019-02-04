@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
+import Header from './Header';
 import { User } from './User';
 import { SelectionBar } from './SelectionBar';
 import { Search } from './Search';
 import Results from './Results';
 
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 
 export default class App extends Component {
   state = {
@@ -53,10 +53,8 @@ export default class App extends Component {
   render() {
     const { login, search, text, value } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
+      <AppPage>
+        <Header />
         {!login ? (
           <User updateUser={this.updateUser} submitForm={this.submitForm} />
         ) : (
@@ -70,7 +68,11 @@ export default class App extends Component {
             <Results search={search} value={value} />
           </>
         )}
-      </div>
+      </AppPage>
     );
   }
 }
+
+const AppPage = styled.div`
+  text-align: center;
+`;

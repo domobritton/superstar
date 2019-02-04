@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -20,6 +21,11 @@ export const SelectionBar = ({ handleChange, value }) => (
     </Tabs>
   </AppBar>
 );
+
+SelectionBar.propTypes = {
+  handleChange: PropTypes.func,
+  value: PropTypes.number,
+};
 
 const Select = styled(Tab)`
   span {

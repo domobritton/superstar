@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ButtonUI from './ButtonUI';
 
 import Grid from '@material-ui/core/Grid';
@@ -37,6 +39,10 @@ const ResultsItems = ({ node }) => {
       </Box>
     </Grid>
   );
+};
+
+ResultsItems.propTypes = {
+  node: PropTypes.object,
 };
 
 const Box = styled(Paper)`
