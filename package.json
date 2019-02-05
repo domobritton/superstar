@@ -12,6 +12,7 @@
     "@material-ui/icons": "^3.0.2",
     "apollo-boost": "^0.1.27",
     "apollo-link-context": "^1.0.14",
+    "gitstar-components": "^1.0.5",
     "graphiql": "^0.12.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",

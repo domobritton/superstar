@@ -1,17 +1,33 @@
 import React from 'react';
+import { STATUS, Avatar } from 'gitstar-components';
 
 import superStar from './superstar.svg';
 
 import StarRate from '@material-ui/icons/StarRate';
 import styled from 'styled-components';
 
-const Header = () => {
+const Header = ({ logout, status, CLIENT_ID, REDIRECT_URI }) => {
   return (
     <Wrapper>
       <Logo>
         <StarRate />
         <img src={superStar} alt="superstar" />
       </Logo>
+      <Avatar
+        style={{
+          marginLeft: 'auto',
+          transform: `scale(${status === STATUS.AUTHENTICATED ? '1' : '0'})`,
+        }}
+      />
+      {status === STATUS.INITIAL ? (
+        <Login
+          href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`}
+        >
+          LOGIN
+        </Login>
+      ) : (
+        <Logout onClick={logout}>LOGOUT</Logout>
+      )}
     </Wrapper>
   );
 };
@@ -19,6 +35,7 @@ const Header = () => {
 const Wrapper = styled.header`
   background-color: #282c34;
   height: 80px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,6 +61,25 @@ const Logo = styled.div`
   img {
     height: 60px;
   }
+`;
+
+const Login = styled.a`
+  display: inline;
+  color: white;
+  font-size: 22px;
+  &:hover {
+    text-decoration-line: none;
+    color: gold;
+  }
+`;
+
+const Logout = styled.button`
+  display: inline;
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  border: none;
+  outline: none;
 `;
 
 export default Header;

@@ -32,7 +32,7 @@ const SearchQuery = gql`
     }
   }
 `;
-
+// owner?
 const UserQuery = gql`
   query($user: String!) {
     user(login: $user) {

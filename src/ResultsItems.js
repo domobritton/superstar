@@ -34,7 +34,7 @@ const ResultsItems = ({ node }) => {
           <Link href={node.url} target="_blank" rel="noopener noreferrer">
             <Github icon={faGithub} size="2x" color="gray" />
           </Link>
-          <ButtonUI />
+          <ButtonUI node={node.id} />
         </Right>
       </Box>
     </Grid>
