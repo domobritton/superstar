@@ -11,7 +11,7 @@ export const User = ({ submitForm, updateUser }) => {
       <Box>
         <Form noValidate autoComplete="off" onSubmit={submitForm}>
           <TextField
-            label="Sign In"
+            label="Your Github username"
             placeholder="View your Github stars"
             fullWidth
             onChange={updateUser}
@@ -45,7 +45,11 @@ const Page = styled.div`
 `;
 
 const Box = styled(Paper)`
-  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 750px;
   padding: 5%;
 
   @media (max-width: 600px) {

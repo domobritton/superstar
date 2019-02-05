@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import ButtonUI from './ButtonUI';
+import ButtonUI from './ButtonUI';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -34,7 +34,7 @@ export const ResultsItems = ({ node }) => {
           <Link href={node.url} target="_blank" rel="noopener noreferrer">
             <Github icon={faGithub} size="2x" color="gray" />
           </Link>
-          {/* <ButtonUI node={node.id} /> */}
+          <ButtonUI id={node.id} starred={node.viewerHasStarred} />
         </Right>
       </Box>
     </Grid>

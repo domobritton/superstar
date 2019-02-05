@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Components } from './components';
 import { Header } from './components';
 
-import { STATUS, Loading, Container } from 'gitstar-components';
+import { STATUS, Loading } from 'gitstar-components';
 import styled from 'styled-components';
 
 const CLIENT_ID = 'cbb4d415a66f8fe3083f';
@@ -42,9 +42,10 @@ class App extends Component {
   };
   render() {
     const { status } = this.state;
+    console.log(this.state.token);
     return (
       <AppPage>
-        <Container>
+        <div>
           <Header
             status={status}
             CLIENT_ID={CLIENT_ID}
@@ -61,8 +62,8 @@ class App extends Component {
               }
             }}
           />
-          <Components status={status} />
-        </Container>
+          {status === STATUS.AUTHENTICATED && <Components status={status} />}
+        </div>
       </AppPage>
     );
   }

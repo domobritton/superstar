@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+
 import { SelectionBar } from './SelectionBar';
 import { Search } from './Search';
 import Results from './Results';
 
 export default class Components extends Component {
   state = {
+    login: false,
     text: '',
-    search: '',
-    user: '',
+    search: 'domobritton',
+    user: 'domobritton',
     value: 0,
   };
   // button change
@@ -16,7 +18,7 @@ export default class Components extends Component {
     const text = event.target.innerText;
     let search = '';
     if (value === 0) {
-      search = user;
+      search = user.slice();
     }
     this.setState({ search, value, text });
   };
@@ -28,7 +30,6 @@ export default class Components extends Component {
   };
   render() {
     const { search, text, value } = this.state;
-    const { status } = this.props;
     return (
       <div>
         <SelectionBar value={value} handleChange={this.handleChange} />

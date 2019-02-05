@@ -4,27 +4,29 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
 
-export const Search = ({ text, updateSearch, value }) => (
-  <Form
-    noValidate
-    autoComplete="off"
-    onSubmit={e => {
-      e.preventDefault();
-    }}
-  >
-    {value !== 0 && (
+export const Search = ({ text, updateSearch, value }) => {
+  const placeholder =
+    value === 0 ? 'Enter username' : 'What will you star today?';
+  return (
+    <Form
+      noValidate
+      autoComplete="off"
+      onSubmit={e => {
+        e.preventDefault();
+      }}
+    >
       <TextField
         label={text}
-        placeholder="What will you star today?"
+        placeholder={placeholder}
         fullWidth
         onChange={updateSearch}
         InputLabelProps={{
           shrink: true,
         }}
       />
-    )}
-  </Form>
-);
+    </Form>
+  );
+};
 
 Search.propTypes = {
   text: PropTypes.string,

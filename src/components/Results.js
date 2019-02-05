@@ -18,6 +18,7 @@ const SearchQuery = gql`
             id
             nameWithOwner
             description
+            viewerHasStarred
             url
             primaryLanguage {
               color
@@ -44,6 +45,7 @@ const UserQuery = gql`
             id
             nameWithOwner
             description
+            viewerHasStarred
             url
             primaryLanguage {
               color
