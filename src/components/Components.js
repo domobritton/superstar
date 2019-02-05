@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { SelectionBar } from './SelectionBar';
-import { Search } from './Search';
-import Results from './Results';
+import { SelectionBar } from './Selection/SelectionBar';
+import { Search } from './Search/Search';
+import Results from './Results/Results';
 
 export default class Components extends Component {
   state = {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import { Components } from './components';
-import { Header } from './components';
+import { Components } from './Components';
+import { SignIn } from './Components/SignIn/SignIn';
+import { Header } from './Components/Header/Header';
 
 import { STATUS, Loading } from 'gitstar-components';
 import styled from 'styled-components';
@@ -42,34 +43,43 @@ class App extends Component {
   };
   render() {
     const { status } = this.state;
-    console.log(this.state.token);
     return (
       <AppPage>
-        <div>
-          <Header
+        {status === STATUS.INITIAL ? (
+          <SignIn
             status={status}
             CLIENT_ID={CLIENT_ID}
             REDIRECT_URI={REDIRECT_URI}
-            logout={this.logout}
           />
-          <Loading
-            status={status}
-            callback={() => {
-              if (this.props.status !== STATUS.AUTHENTICATED) {
-                this.setState({
-                  status: STATUS.AUTHENTICATED,
-                });
-              }
-            }}
-          />
-          {status === STATUS.AUTHENTICATED && <Components status={status} />}
-        </div>
+        ) : (
+          <div>
+            <Header
+              status={status}
+              CLIENT_ID={CLIENT_ID}
+              REDIRECT_URI={REDIRECT_URI}
+              logout={this.logout}
+            />
+            <Loading
+              status={status}
+              callback={() => {
+                if (this.props.status !== STATUS.AUTHENTICATED) {
+                  this.setState({
+                    status: STATUS.AUTHENTICATED,
+                  });
+                }
+              }}
+            />
+            {status === STATUS.AUTHENTICATED && <Components status={status} />}
+          </div>
+        )}
       </AppPage>
     );
   }
 }
 
 const AppPage = styled.div`
+  min-height: 100vh;
+  background: #f5f5f5;
   text-align: center;
 `;
 

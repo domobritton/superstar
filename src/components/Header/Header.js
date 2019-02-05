@@ -1,12 +1,12 @@
 import React from 'react';
 import { STATUS, Avatar } from 'gitstar-components';
 
-import superStar from '../superstar.svg';
+import superStar from '../../superstar.svg';
 
 import StarRate from '@material-ui/icons/StarRate';
 import styled from 'styled-components';
 
-const Header = ({ logout, status, CLIENT_ID, REDIRECT_URI }) => {
+export const Header = ({ logout, status, CLIENT_ID, REDIRECT_URI }) => {
   return (
     <Wrapper>
       <Logo>
@@ -33,7 +33,7 @@ const Header = ({ logout, status, CLIENT_ID, REDIRECT_URI }) => {
 };
 
 const Wrapper = styled.header`
-  background-color: #282c34;
+  background-color: gray;
   height: 80px;
   padding: 0 20px;
   display: flex;
@@ -81,5 +81,3 @@ const Logout = styled.button`
   border: none;
   outline: none;
 `;
-
-export default Header;

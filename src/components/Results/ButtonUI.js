@@ -1,33 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import { withApollo, Mutation } from 'react-apollo';
+
+import { ADD_STAR, REMOVE_STAR } from '../../utilities/graphql/star';
 
 import Button from '@material-ui/core/Button';
 import StarRate from '@material-ui/icons/StarRate';
 import styled from 'styled-components';
-
-const ADD_STAR = gql`
-  mutation AddStar($input: AddStarInput!) {
-    addStar(input: $input) {
-      starrable {
-        id
-        viewerHasStarred
-      }
-    }
-  }
-`;
-
-const REMOVE_STAR = gql`
-  mutation RemoveStar($input: RemoveStarInput!) {
-    removeStar(input: $input) {
-      starrable {
-        id
-        viewerHasStarred
-      }
-    }
-  }
-`;
 
 class ButtonUI extends Component {
   render() {
