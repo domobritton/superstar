@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ButtonUI from './ButtonUI';
+// import ButtonUI from './ButtonUI';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import styled from 'styled-components';
 
-const ResultsItems = ({ node }) => {
+export const ResultsItems = ({ node }) => {
   return (
     <Grid item xs={12}>
       <Box>
@@ -34,7 +34,7 @@ const ResultsItems = ({ node }) => {
           <Link href={node.url} target="_blank" rel="noopener noreferrer">
             <Github icon={faGithub} size="2x" color="gray" />
           </Link>
-          <ButtonUI node={node.id} />
+          {/* <ButtonUI node={node.id} /> */}
         </Right>
       </Box>
     </Grid>
@@ -127,5 +127,3 @@ const Link = styled.a`
   margin-left: auto;
   margin-bottom: 20px;
 `;
-
-export default ResultsItems;

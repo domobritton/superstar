@@ -35,5 +35,5 @@ Search.propTypes = {
 const Form = styled.form`
   display: flex;
   padding: 40px 5%;
-  height: 60px;
+  height: 160px;
 `;

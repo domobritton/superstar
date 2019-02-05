@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { withApollo, Query } from 'react-apollo';
 
-import ResultsItems from './ResultsItems';
+import { ResultsItems } from './ResultsItems';
 
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { STATUS, Avatar } from 'gitstar-components';
 
-import superStar from './superstar.svg';
+import superStar from '../superstar.svg';
 
 import StarRate from '@material-ui/icons/StarRate';
 import styled from 'styled-components';
