@@ -7,8 +7,8 @@ import { Header } from './Components/Header/Header';
 import { STATUS, Loading } from 'gitstar-components';
 import { AppPage } from './AppStyle';
 
-const CLIENT_ID = 'cbb4d415a66f8fe3083f';
-const REDIRECT_URI = 'http://localhost:3000/';
+const CLIENT_ID = 'Iv1.98fb84f6596d6c86';
+const REDIRECT_URI = 'https://superstargit.herokuapp.com/';
 
 class App extends Component {
   state = {
