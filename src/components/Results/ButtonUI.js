@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withApollo, Mutation } from 'react-apollo';
-
 import { ADD_STAR, REMOVE_STAR } from '../../utilities/graphql/star';
 
 import Button from '@material-ui/core/Button';
