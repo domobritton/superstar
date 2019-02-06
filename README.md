@@ -1,3 +1,31 @@
+# SuperStar
+
+[SuperStar Live](https://superstargit.herokuapp.com/)
+
+SuperStar is a web app which enables a user to view repositories they have starred, search for and star new repositories, and un-star repositories. It utilizes Apollo GraphQL and React to interact with Github's GraphQL API.
+
+## Items
+
+- Application deployed to Heroku
+- Used Prettier to format code with ESLint
+- Wrote Jest snapshot tests (Full Jest tests to be completed soon)
+- UI is responsive for users on mobile phones and utilizes Material UI for a clean UI/UX
+- Styled-Components to eliminate classNames and clean easy to reason about code
+
+## Resources
+
+https://www.apollographql.com/docs/
+
+https://gist.github.com/helfer/16ae2323ff3c23cedc69471a973a4f0f
+
+[An Introduction to GraphQL via the GitHub API - via @codeship | via @codeship](https://blog.codeship.com/an-introduction-to-graphql-via-the-github-api/)
+
+[A quick tour of GitHub’s GraphQL API - YouTube](https://www.youtube.com/watch?v=6xO87LlijoQ)
+
+[GitHub GraphQL API v4 | GitHub Developer Guide](https://developer.github.com/v4/)
+
+https://www.graphql.college/building-a-github-client-with-react-apollo/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

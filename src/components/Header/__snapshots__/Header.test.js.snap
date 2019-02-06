@@ -34,7 +34,7 @@ exports[`<Header /> 1`] = `
     class="avatar avatar-small"
     height="32"
     src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
-    style="margin-left: auto; transform: scale(0);"
+    style="border-radius: 50%; margin-left: auto; transform: scale(0);"
     width="32"
   />
   <button
