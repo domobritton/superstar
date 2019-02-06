@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Components } from './Components';
+import Components from './Components/Components';
 import { SignIn } from './Components/SignIn/SignIn';
 import { Header } from './Components/Header/Header';
 
@@ -9,6 +9,7 @@ import { AppPage } from './AppStyle';
 
 const CLIENT_ID = 'Iv1.98fb84f6596d6c86';
 const REDIRECT_URI = 'https://superstargit.herokuapp.com/';
+// const REDIRECT_URI = 'http://localhost:3000/';
 
 class App extends Component {
   state = {
