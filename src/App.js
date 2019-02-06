@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Components from './Components/Components';
-import { SignIn } from './Components/SignIn/SignIn';
-import { Header } from './Components/Header/Header';
+import Components from './components/Components';
+import { SignIn } from './components/SignIn/SignIn';
+import { Header } from './components/Header/Header';
 
 import { STATUS, Loading } from 'gitstar-components';
 import { AppPage } from './AppStyle';
 
-const CLIENT_ID = 'Iv1.98fb84f6596d6c86';
+const CLIENT_ID = 'cbb4d415a66f8fe3083f';
 const REDIRECT_URI = 'https://superstargit.herokuapp.com/';
 // const REDIRECT_URI = 'http://localhost:3000/';
 
@@ -18,16 +18,23 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      this.setState({
+        token: storedToken,
+        status: STATUS.AUTHENTICATED,
+      });
+      return;
+    }
     const code =
       window.location.href.match(/\?code=(.*)/) &&
       window.location.href.match(/\?code=(.*)/)[1];
     if (code) {
-      this.setState({
-        status: STATUS.LOADING,
-      });
+      this.setState({ status: STATUS.LOADING });
       fetch(`https://gitsuperstar.herokuapp.com/authenticate/${code}`)
         .then(response => response.json())
         .then(({ token }) => {
+          localStorage.setItem('token', token);
           this.setState({
             token,
             status: STATUS.FINISHED_LOADING,

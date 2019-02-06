@@ -19,7 +19,7 @@ const ButtonUI = ({ id, starred }) => {
               onClick={e => {
                 e.preventDefault();
                 removeStar({
-                  variables: { input: { starrableId: this.props.id } },
+                  variables: { input: { starrableId: id } },
                 });
               }}
               variant="contained"
@@ -39,7 +39,7 @@ const ButtonUI = ({ id, starred }) => {
               onClick={e => {
                 e.preventDefault();
                 addStar({
-                  variables: { input: { starrableId: this.props.id } },
+                  variables: { input: { starrableId: id } },
                 });
               }}
               variant="contained"
