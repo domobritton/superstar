@@ -7,7 +7,7 @@ import { Header } from './components/Header/Header';
 import { STATUS, Loading } from 'gitstar-components';
 import { AppPage } from './AppStyle';
 
-const CLIENT_ID = 'cbb4d415a66f8fe3083f';
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REDIRECT_URI = 'https://superstargit.herokuapp.com/';
 // const REDIRECT_URI = 'http://localhost:3000/';
 
