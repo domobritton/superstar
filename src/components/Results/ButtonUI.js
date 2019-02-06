@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withApollo, Mutation } from 'react-apollo';
-import { ADD_STAR, REMOVE_STAR } from '../../utilities/graphql/star';
+import { ADD_STAR, REMOVE_STAR } from '../../utilities/graphql/mutateStar';
+import { STARS_QUERY } from '../../utilities/graphql/starsQuery';
 
 import Button from '@material-ui/core/Button';
 import { Star } from './ButtonUIStyle';
 
+// rewrite to DRY up code
 const ButtonUI = ({ id, starred }) => {
   const starColor = starred ? { color: 'gold' } : { color: 'white' };
   return (
     <div>
       {starred ? (
-        <Mutation mutation={REMOVE_STAR} variable={{ input: id }}>
+        <Mutation
+          mutation={REMOVE_STAR}
+          variable={{ input: id }}
+          refetchQueries={[{ query: STARS_QUERY }]}
+        >
           {(removeStar, { data }) => (
             <Button
               data-testid={'mutate'}
@@ -31,7 +37,11 @@ const ButtonUI = ({ id, starred }) => {
           )}
         </Mutation>
       ) : (
-        <Mutation mutation={ADD_STAR} variable={{ input: id }}>
+        <Mutation
+          mutation={ADD_STAR}
+          variable={{ input: id }}
+          refetchQueries={[{ query: STARS_QUERY }]}
+        >
           {(addStar, { data }) => (
             <Button
               data-testid={'mutate'}

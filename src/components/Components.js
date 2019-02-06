@@ -3,39 +3,33 @@ import React, { Component } from 'react';
 import { SelectionBar } from './Selection/SelectionBar';
 import { Search } from './Search/Search';
 import Results from './Results/Results';
+import Stars from './Results/Stars';
 
 export default class Components extends Component {
   state = {
-    login: false,
     text: '',
-    search: 'domobritton',
-    user: 'domobritton',
+    search: '',
     value: 0,
   };
   // button change
   handleChange = (event, value) => {
-    const { user } = this.state;
     const text = event.target.innerText;
-    let search = '';
-    if (value === 0) {
-      search = user.slice();
-    }
-    this.setState({ search, value, text });
+    this.setState({ value, text });
   };
 
   // search query
   updateSearch = event => {
-    const { value } = event.target;
-    this.setState({ search: value });
+    const search = event.target.value;
+    this.setState({ search });
   };
   render() {
     const { search, text, value } = this.state;
     return (
-      <div>
+      <>
         <SelectionBar value={value} handleChange={this.handleChange} />
         <Search text={text} updateSearch={this.updateSearch} value={value} />
-        <Results search={search} value={value} />
-      </div>
+        {value === 0 ? <Stars /> : <Results search={search} value={value} />}
+      </>
     );
   }
 }

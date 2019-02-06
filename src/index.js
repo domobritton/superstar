@@ -16,20 +16,11 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from .env if it exists
-  // WORKS BUT IS PERSONAL ACCESS TOKEN
-  // const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
-  // SAME THING ALSO WORKS PAT
-  const token = `2ad69e9c0dcec5216828b78812efca1611deb8ed`;
-  // ACCESS TOKEN THROUGH USER AUTH RETURNED FROM GITHUB DOESNT WORK
-  // const token = `cffdd6812bdcd7cb1608924deb5c5f2667589623`;
-  // SAME THING AS ABOVE JUST PULLED FROM localStorage DOESNT WORK
-  // const token = localStorage.getItem('token');
-  // console.log('token', token);
-  // return the headers to the context so httpLink can read them
+  const token = localStorage.getItem('token');
   return {
     headers: {
       ...headers,
+      Accept: 'application/json',
       Authorization: token ? `Bearer ${token}` : '',
     },
   };

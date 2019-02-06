@@ -1,11 +1,11 @@
 import gql from 'graphql-tag';
 
-export const USER_QUERY = gql`
-  query($user: String!) {
-    user(login: $user) {
-      id
+export const STARS_QUERY = gql`
+  query {
+    viewer {
       name
       starredRepositories(last: 30) {
+        totalCount
         edges {
           node {
             id

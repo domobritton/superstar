@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetch from 'unfetch';
 
 import Components from './components/Components';
 import { SignIn } from './components/SignIn/SignIn';

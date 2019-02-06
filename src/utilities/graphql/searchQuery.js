@@ -25,3 +25,4 @@ export const SEARCH_QUERY = gql`
     }
   }
 `;
+// create a fragment to DRY up code between SEARCH_QUERY and STARS_QUERY
