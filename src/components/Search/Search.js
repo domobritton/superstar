@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TextField from '@material-ui/core/TextField';
-import styled from 'styled-components';
+import { Form } from './SearchStyle';
 
 export const Search = ({ text, updateSearch, value }) => {
   const placeholder =
@@ -33,9 +33,3 @@ Search.propTypes = {
   updateSearch: PropTypes.func,
   value: PropTypes.number,
 };
-
-const Form = styled.form`
-  display: flex;
-  padding: 40px 5%;
-  height: 160px;
-`;

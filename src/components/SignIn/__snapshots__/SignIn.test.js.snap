@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn /> 1`] = `
+<div
+  class="sc-bdVaJa fQQRvV"
+>
+  <img
+    alt="superstar"
+    class="sc-bwzfXH fOkLGk"
+    src="superstar.svg"
+  />
+</div>
+`;

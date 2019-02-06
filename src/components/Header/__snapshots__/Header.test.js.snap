@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> 1`] = `
+<header
+  class="sc-bdVaJa kGslVD"
+>
+  <div
+    class="sc-bwzfXH kCkLlS"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root-1"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"
+        transform="scale(1.33, 1.33)"
+      />
+      <path
+        d="M0 0h18v18H0z"
+        fill="none"
+        transform="scale(1.33, 1.33)"
+      />
+    </svg>
+    <img
+      alt="superstar"
+      src="superstar.svg"
+    />
+  </div>
+  <img
+    alt="logo"
+    class="avatar avatar-small"
+    height="32"
+    src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+    style="margin-left: auto; transform: scale(0);"
+    width="32"
+  />
+  <button
+    class="sc-htpNat gAzCtX"
+    data-testid="logout"
+  >
+    LOGOUT
+  </button>
+</header>
+`;

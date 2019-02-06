@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> 1`] = `
+<form
+  autocomplete="off"
+  class="sc-bdVaJa btorsK"
+  novalidate=""
+>
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-fullWidth-4"
+  >
+    <div
+      class="MuiInputBase-root-18 MuiInput-root-5 MuiInput-underline-9 MuiInputBase-fullWidth-27 MuiInput-fullWidth-12 MuiInputBase-formControl-19 MuiInput-formControl-6"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input-28 MuiInput-input-13"
+        placeholder="What will you star today?"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</form>
+`;

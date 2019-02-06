@@ -5,7 +5,7 @@ import { SignIn } from './Components/SignIn/SignIn';
 import { Header } from './Components/Header/Header';
 
 import { STATUS, Loading } from 'gitstar-components';
-import styled from 'styled-components';
+import { AppPage } from './AppStyle';
 
 const CLIENT_ID = 'cbb4d415a66f8fe3083f';
 const REDIRECT_URI = 'http://localhost:3000/';
@@ -53,12 +53,7 @@ class App extends Component {
           />
         ) : (
           <div>
-            <Header
-              status={status}
-              CLIENT_ID={CLIENT_ID}
-              REDIRECT_URI={REDIRECT_URI}
-              logout={this.logout}
-            />
+            <Header status={status} logout={this.logout} />
             <Loading
               status={status}
               callback={() => {
@@ -76,11 +71,5 @@ class App extends Component {
     );
   }
 }
-
-const AppPage = styled.div`
-  min-height: 100vh;
-  background: #f5f5f5;
-  text-align: center;
-`;
 
 export default App;

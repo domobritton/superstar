@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import { Page, Count, Name } from './ResultsStyle';
 
 const Results = ({ search, value }) => {
+  if (!search) return null;
   const vars = varSwitch(search, value, SEARCH_QUERY, USER_QUERY);
   return (
     <Page>

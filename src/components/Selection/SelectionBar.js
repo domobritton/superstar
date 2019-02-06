@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import styled from 'styled-components';
+import { Select } from './SelectionBarStyle';
 
 export const SelectionBar = ({ handleChange, value }) => (
   <AppBar position="static" color="default">
@@ -26,12 +25,3 @@ SelectionBar.propTypes = {
   handleChange: PropTypes.func,
   value: PropTypes.number,
 };
-
-const Select = styled(Tab)`
-  span {
-    font-size: 17px;
-    @media (max-width: 600px) {
-      font-size: 12px;
-    }
-  }
-`;

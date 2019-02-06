@@ -3,7 +3,7 @@ import React from 'react';
 import { STATUS } from 'gitstar-components';
 
 import superStar from '../../superstar.svg';
-import styled from 'styled-components';
+import { Page, Logo, Login } from './SignInStyle';
 
 export const SignIn = ({ status, CLIENT_ID, REDIRECT_URI }) => {
   return (
@@ -19,27 +19,3 @@ export const SignIn = ({ status, CLIENT_ID, REDIRECT_URI }) => {
     </Page>
   );
 };
-
-const Page = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  background: gray;
-`;
-
-const Logo = styled.img`
-  width: 450px;
-`;
-
-const Login = styled.a`
-  color: white;
-  font-size: 22px;
-  &:hover {
-    text-decoration-line: none;
-    color: gold;
-  }
-`;
-
-export default SignIn;

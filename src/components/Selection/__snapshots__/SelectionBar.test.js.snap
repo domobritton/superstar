@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SelectionBar /> 1`] = `
+<header
+  class="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorDefault-7"
+>
+  <div
+    class="MuiTabs-root-37"
+  >
+    <div
+      class="MuiTabs-flexContainer-38"
+    >
+      <div
+        class="MuiTabs-scroller-40 MuiTabs-fixed-41"
+        role="tablist"
+        style="margin-bottom: 0px;"
+      >
+        <div
+          class="MuiTabs-flexContainer-38"
+        >
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorPrimary-49 MuiTab-fullWidth-53 sc-bdVaJa bCGswX"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper-54"
+            >
+              <span
+                class="MuiTab-labelContainer-55"
+              >
+                <span
+                  class="MuiTab-label-56"
+                >
+                  View My Stars
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root-61"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorPrimary-49 MuiTab-fullWidth-53 sc-bdVaJa bCGswX"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper-54"
+            >
+              <span
+                class="MuiTab-labelContainer-55"
+              >
+                <span
+                  class="MuiTab-label-56"
+                >
+                  Search By User
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root-61"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root-58 MuiTab-root-46 MuiTab-textColorPrimary-49 MuiTab-fullWidth-53 sc-bdVaJa bCGswX"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper-54"
+            >
+              <span
+                class="MuiTab-labelContainer-55"
+              >
+                <span
+                  class="MuiTab-label-56"
+                >
+                  Search By Repo
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root-61"
+            />
+          </button>
+        </div>
+        <span
+          class="MuiPrivateTabIndicator-root-68 MuiPrivateTabIndicator-colorPrimary-69 MuiTabs-indicator-45"
+          style="left: 0px; width: 0px;"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+`;
